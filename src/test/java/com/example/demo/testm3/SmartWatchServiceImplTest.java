@@ -20,9 +20,9 @@ public class SmartWatchServiceImplTest {
         SmartWatchServiceImpl service = new SmartWatchServiceImpl();
 
         SmartWatch watch1 = new SmartWatch(null, "Apple Watch",
-                new RAM(1L, "WATCH", 4),
-                new Battery(1L, 2500.0),
-                new CPU(1L, 2),
+                new RAM(1L, "DDR4", 2),
+                new Battery(1L, 4500.0),
+                new CPU(1L, 4),
                 false);
 
         assertEquals(3,service.count());
@@ -34,13 +34,13 @@ public class SmartWatchServiceImplTest {
         assertEquals(4, result.getId());
     }
     @Test
-    @DisplayName("If 0 should assign a new value")
+    @DisplayName("If 0 assign a new value")
     void saveIdZeroTest() {
         SmartWatchServiceImpl service = new SmartWatchServiceImpl();
 
         SmartWatch watch1 = new SmartWatch(0L, "Apple watch",
-                new RAM(1L, "WATCH", 4),
-                new Battery(1L, 2500.0),
+                new RAM(1L, "DDR4", 2),
+                new Battery(1L, 4500.0),
                 new CPU(1L, 4),
                 false);
 

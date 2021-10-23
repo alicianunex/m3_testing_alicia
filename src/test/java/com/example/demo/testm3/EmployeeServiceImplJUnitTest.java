@@ -1,4 +1,4 @@
-package com.example.demo.testm3.service;
+package com.example.demo.testm3;
 
 import com.example.demo.domain.Employee;
 import com.example.demo.repository.EmployeeRepository;

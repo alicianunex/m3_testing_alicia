@@ -1,4 +1,4 @@
-package com.example.demo.testm3.service;
+package com.example.demo.testm3;
 
 import com.example.demo.service.IVACalculator;
 import org.junit.jupiter.api.Test;

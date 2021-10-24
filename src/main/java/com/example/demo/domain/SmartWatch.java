@@ -8,9 +8,9 @@ import com.example.demo.domain.pieces.RAM;
 public class SmartWatch extends SmartDevice{
 
 	private HealthMonitor monitor;
-	
-	public SmartWatch(Long l, String apple_watch, RAM ddr4, Battery battery, CPU cpu, boolean b) {}
-	
+
+	public SmartWatch() {}
+
 	public SmartWatch(Long id, String name, RAM ram, Battery battery, CPU cpu, Boolean wifi, HealthMonitor monitor) {
 		super(id, name, ram, battery, cpu, wifi);
 		this.monitor = monitor;
@@ -31,6 +31,6 @@ public class SmartWatch extends SmartDevice{
 				+ "]";
 	}
 
-	
-	
+
+
 }

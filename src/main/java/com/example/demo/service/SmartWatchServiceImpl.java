@@ -10,39 +10,39 @@ import java.util.*;
 
 public class SmartWatchServiceImpl implements SmartWatchService{
 
-	/**
-	 * Emulates a database with java hashmap
-	 */
+    /**
+     * Emulates a database with java hashmap
+     */
     private final Map<Long, SmartWatch> smartwatches = new HashMap<>();
 
-    
+
     public SmartWatchServiceImpl() {
-    	// demo data
-		SmartWatch watch1 = new SmartWatch(1L, "Fitbit sense", 
-				new RAM(1L, "DDR4", 2),
-				new Battery(1L, 4500.0),
-				new CPU(1L, 4),
-				true,
-				new HealthMonitor(1L, 0.0, 0));
-		
-		SmartWatch watch2 = new SmartWatch(2L, "Ticwatch", 
-				new RAM(2L, "DDR3", 4),
-				new Battery(2L, 4500.0),
-				new CPU(2L, 4),
-				true,
-				new HealthMonitor(2L, 0.0, 0));
-		
-		SmartWatch watch3 = new SmartWatch(1L, "Samsung Galaxy Watch", 
-				new RAM(3L, "DDR4", 2),
-				new Battery(3L, 4500.0),
-				new CPU(3L, 4),
-				true,
-				new HealthMonitor(3L, 0.0, 0));
-		
-		
-		smartwatches.put(1L, watch1);
-		smartwatches.put(2L, watch2);
-    	smartwatches.put(3L, watch3);
+        // demo data
+        SmartWatch watch1 = new SmartWatch(1L, "Fitbit sense",
+                new RAM(1L, "DDR4", 2),
+                new Battery(1L, 4500.0),
+                new CPU(1L, 4),
+                true,
+                new HealthMonitor(1L, 0.0, 0));
+
+        SmartWatch watch2 = new SmartWatch(2L, "Ticwatch",
+                new RAM(2L, "DDR3", 4),
+                new Battery(2L, 4500.0),
+                new CPU(2L, 4),
+                true,
+                new HealthMonitor(2L, 0.0, 0));
+
+        SmartWatch watch3 = new SmartWatch(1L, "Samsung Galaxy Watch",
+                new RAM(3L, "DDR4", 2),
+                new Battery(3L, 4500.0),
+                new CPU(3L, 4),
+                true,
+                new HealthMonitor(3L, 0.0, 0));
+
+
+        smartwatches.put(1L, watch1);
+        smartwatches.put(2L, watch2);
+        smartwatches.put(3L, watch3);
     }
 
     @Override

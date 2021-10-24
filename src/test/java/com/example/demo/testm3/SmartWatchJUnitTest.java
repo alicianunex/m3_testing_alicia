@@ -22,20 +22,20 @@ public class SmartWatchJUnitTest {
                 new RAM(1L, "DDR4", 8),
                 new Battery(1L, 4500.0),
                 new CPU(1L, 4),
-                false,
-                new HealthMonitor(1L, 12D, 5));
+                false
+        );
         smartWatchProper =  new SmartWatch(4L,
                 "Samsung Galaxy SmartWatch",
                 new RAM(1L, "DDR4", 8),
                 new Battery(1L, 4500.0),
                 new CPU(1L, 4),
-                false, new HealthMonitor(1L, 12D, 5));
+                false);
     }
     @Nested
     public class contructorTest {
 
         @Test
-        void fullConstructorTest() {
+        public void fullConstructorTest() {
 
             MatcherAssert.assertThat(smartWatch, instanceOf(SmartDevice.class));
             MatcherAssert.assertThat(smartWatchProper, instanceOf(SmartWatch.class));
@@ -49,7 +49,7 @@ public class SmartWatchJUnitTest {
         public class get_set_toStringTest {
 
             @Test
-            void getMonitorTest() {
+            protected void getMonitorTest() {
                 assertEquals(5,smartWatchProper.getMonitor().getSleepQuality());
             }
 

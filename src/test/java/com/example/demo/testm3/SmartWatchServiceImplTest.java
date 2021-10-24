@@ -62,4 +62,26 @@ public class SmartWatchServiceImplTest {
         boolean result = service.delete(null);
         assertFalse(result);
     }
+    @Test
+    void deleteNotContainsTest(){
+        SmartWatchServiceImpl service = new SmartWatchServiceImpl();
+        boolean result = service.delete(-1L);
+        assertFalse(result);
+    }
+    @Test
+    void deleteOKTest(){
+        SmartWatchServiceImpl service = new SmartWatchServiceImpl();
+        boolean result = service.delete(1L);
+        assertTrue(result);
+    }
+
+
+    @Test
+    void deleteAllTest(){
+        SmartWatchServiceImpl service = new SmartWatchServiceImpl();
+        assertTrue(service.count()>0);
+        service.deleteAll();
+        assertEquals(0,service.count());
+    }
 }
+

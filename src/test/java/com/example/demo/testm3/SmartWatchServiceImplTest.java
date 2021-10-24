@@ -19,7 +19,8 @@ public class SmartWatchServiceImplTest {
     void saveIdNullTest() {
         SmartWatchServiceImpl service = new SmartWatchServiceImpl();
 
-        SmartWatch watch1 = new SmartWatch(null, "Apple Watch",
+        SmartWatch watch1 = new SmartWatch(null,
+                "Apple Watch",
                 new RAM(1L, "DDR4", 2),
                 new Battery(1L, 4500.0),
                 new CPU(1L, 4),

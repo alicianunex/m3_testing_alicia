@@ -3,7 +3,6 @@ package com.example.demo.service;
 import com.example.demo.domain.SmartWatch;
 import com.example.demo.domain.pieces.Battery;
 import com.example.demo.domain.pieces.CPU;
-import com.example.demo.domain.pieces.HealthMonitor;
 import com.example.demo.domain.pieces.RAM;
 
 import java.util.*;
@@ -22,22 +21,22 @@ public class SmartWatchServiceImpl implements SmartWatchService{
                 new RAM(1L, "DDR4", 2),
                 new Battery(1L, 4500.0),
                 new CPU(1L, 4),
-                true,
-                new HealthMonitor(1L, 0.0, 0));
+                true
+        );
 
         SmartWatch watch2 = new SmartWatch(2L, "Ticwatch",
                 new RAM(2L, "DDR3", 4),
                 new Battery(2L, 4500.0),
                 new CPU(2L, 4),
-                true,
-                new HealthMonitor(2L, 0.0, 0));
+                true
+        );
 
         SmartWatch watch3 = new SmartWatch(1L, "Samsung Galaxy Watch",
                 new RAM(3L, "DDR4", 2),
                 new Battery(3L, 4500.0),
                 new CPU(3L, 4),
-                true,
-                new HealthMonitor(3L, 0.0, 0));
+                true
+        );
 
 
         smartwatches.put(1L, watch1);

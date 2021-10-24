@@ -34,6 +34,6 @@ public class SmartDeviceFacade {
 		// smartphone exclusive pieces
 		HealthMonitor monitor = new HealthMonitor(1L, 0.0, 0);
 
-		return new SmartWatch(1L, "Default smartwatch", ram, battery, cpu, true, monitor);
+		return new SmartWatch(1L, "Default smartwatch", ram, battery, cpu, true);
 	}
 }

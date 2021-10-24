@@ -3,13 +3,10 @@ package com.example.demo.testm3;
 import com.example.demo.domain.SmartDevice;
 import com.example.demo.domain.SmartWatch;
 import com.example.demo.domain.pieces.*;
-import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SmartWatchJUnitTest {
@@ -31,27 +28,7 @@ public class SmartWatchJUnitTest {
                 new CPU(1L, 4),
                 false);
     }
-    @Nested
-    public class contructorTest {
 
-        @Test
-        public void fullConstructorTest() {
-
-            MatcherAssert.assertThat(smartWatch, instanceOf(SmartDevice.class));
-            MatcherAssert.assertThat(smartWatchProper, instanceOf(SmartWatch.class));
-
-            assertEquals(8,smartWatch.getRam().getGigabytes()) ;
-            assertEquals("DDR4",smartWatch.getRam().getType()) ;
-            assertEquals(12D,smartWatchProper.getMonitor().getBloodPressure()) ;
-
-        }
-        @Nested
-        public class get_set_toStringTest {
-
-            @Test
-            protected void getMonitorTest() {
-                assertEquals(5,smartWatchProper.getMonitor().getSleepQuality());
-            }
 
             @Test
             void setCameraTest() {
@@ -63,5 +40,4 @@ public class SmartWatchJUnitTest {
 
         }
 
-    }
-}
+

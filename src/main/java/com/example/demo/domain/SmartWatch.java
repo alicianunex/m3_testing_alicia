@@ -11,7 +11,7 @@ public class SmartWatch extends SmartDevice{
 
 	public SmartWatch() {}
 
-	public SmartWatch(Long id, String name, RAM ram, Battery battery, CPU cpu, Boolean wifi, HealthMonitor monitor) {
+	public SmartWatch(Long id, String name, RAM ram, Battery battery, CPU cpu, Boolean wifi) {
 		super(id, name, ram, battery, cpu, wifi);
 		this.monitor = monitor;
 	}

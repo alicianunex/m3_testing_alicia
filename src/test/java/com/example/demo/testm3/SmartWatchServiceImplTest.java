@@ -26,14 +26,15 @@ public class SmartWatchServiceImplTest {
                 new CPU(1L, 4),
                 false);
 
-        assertEquals(3,service.count());
+        assertEquals(3, service.count());
         SmartWatch result = service.save(watch1);
-        assertEquals(4,service.count());
+        assertEquals(4, service.count());
 
         assertNotNull(watch1);
         assertNotNull(result.getId());
         assertEquals(4, result.getId());
     }
+
     @Test
     @DisplayName("If 0 assign a new value")
     void saveIdZeroTest() {
@@ -45,9 +46,9 @@ public class SmartWatchServiceImplTest {
                 new CPU(1L, 4),
                 false);
 
-        assertEquals(3,service.count());
+        assertEquals(3, service.count());
         SmartWatch result = service.save(watch1);
-        assertEquals(4,service.count());
+        assertEquals(4, service.count());
 
         assertNotNull(watch1);
         assertNotNull(result.getId());
@@ -55,33 +56,10 @@ public class SmartWatchServiceImplTest {
     }
 
 
-
     @Test
-    void deleteNullTest(){
+    void deleteNullTest() {
         SmartWatchServiceImpl service = new SmartWatchServiceImpl();
         boolean result = service.delete(null);
         assertFalse(result);
     }
-    @Test
-    void deleteNotContainsTest(){
-        SmartWatchServiceImpl service = new SmartWatchServiceImpl();
-        boolean result = service.delete(-1L);
-        assertFalse(result);
-    }
-    @Test
-    void deleteOKTest(){
-        SmartWatchServiceImpl service = new SmartWatchServiceImpl();
-        boolean result = service.delete(1L);
-        assertTrue(result);
-    }
-
-
-    @Test
-    void deleteAllTest(){
-        SmartWatchServiceImpl service = new SmartWatchServiceImpl();
-        assertTrue(service.count()>0);
-        service.deleteAll();
-        assertEquals(0,service.count());
-    }
 }
-

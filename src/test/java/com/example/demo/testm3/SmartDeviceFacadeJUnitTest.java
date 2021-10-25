@@ -1,32 +1,24 @@
 package com.example.demo.testm3;
 
-import com.example.demo.domain.SmartDevice;
+import com.example.demo.domain.SmartPhone;
 import com.example.demo.service.SmartDeviceFacade;
-
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class SmartDeviceFacadeJUnitTest {
-    SmartDeviceFacade smartDeviceFacade;
-    SmartDevice smartDevice = new SmartDevice() {
-        @Override
-        public Long getId() {
-            return super.getId();
-        }
-    };
 
 
     @Test
-    void count() {
+    void createSmartPhoneTest() {
 
-    }
-    @Test
-    void findOne() {
+        SmartPhone smartPhone = (SmartPhone) SmartDeviceFacade.createSmartPhone();
 
+        assertEquals("DDR4", smartPhone.getRam().getType());
+        assertEquals(12.5, smartPhone.getCamera().getMegapixels());
+        assertTrue(smartPhone.getWifi());
     }
-    @Test
-    void findAll() {
 
-    }
+
 }

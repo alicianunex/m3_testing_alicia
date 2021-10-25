@@ -10,7 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,9 +26,9 @@ public class EmployeeServiceImplJUnitTest {
     void setUp() {
         employeeService = new EmployeeServiceImpl(employeeRepository);
 }
+    @DisplayName("Count employees number")
     @Test
-    void countTest() {
-        // see EmployeeRepositoryImpTest.countTest()
+    void countEmployeesTest() {
 
         Integer num = employeeService.count();
         assertAll(
@@ -39,33 +39,22 @@ public class EmployeeServiceImplJUnitTest {
     }
 
     @Nested
-    public class FIND_tests {
+    public class FindTests {
 
-
+        @DisplayName("Find all tests")
         @Test
-        @DisplayName("display all entries")
-        void findAllReturnTest() {
+        void findAllTests() {
 
             List<Employee> found = employeeService.findAll();
-            List<Employee> b = new ArrayList<>();
 
             assertAll(
                     () -> assertNotNull(found),
-                    () -> assertTrue(found.size() > 0),
-                    () -> assertSame(b.getClass(), found.getClass())
+                    () -> assertTrue(found.size() > 0)
             );
-            int nullcount = 0;
-            for (Employee count : found)
-                while (nullcount < found.size()) {
-                    assertNotNull(count); // if any is null break
-                    nullcount += 1;
-                }
-            // TODO Fix null check for count(see line above)
         }
 
         @Test
-        @DisplayName("check an id")
-        void findOneReturn1Test() {
+        void findOneReturnOne() {
 
             Employee found = employeeService.findOne(1L);
             assertAll(
@@ -79,12 +68,11 @@ public class EmployeeServiceImplJUnitTest {
         }
 
         @Test
-        @DisplayName("check the null id")
-        void findOneReturnNullTest() {
+        void findOneReturnNull() {
 
             try {
                 Employee found = employeeService.findOne(null);
-                assertNull(found); // Unreachable
+                assertNull(found);
             } catch (IllegalArgumentException error) {
                 error.printStackTrace();
                 assertThrows(IllegalArgumentException.class, () -> employeeRepository.findOne(null));
@@ -93,50 +81,33 @@ public class EmployeeServiceImplJUnitTest {
     }
 
     @Nested
-    public class SAVE_Tests {
+    public class SaveTests {
 
 
         @Test
-        void saveNullObjectTest() {
-            // Shouldn't save empty obj
+        void saveNullObject() {
+
             Employee employee = new Employee();
-            //assumeTrue(employee == null);
             int temp = employeeService.count();
             employeeService.save(employee);
-            //assertNull(employee1);
             assertTrue(temp < employeeService.count());
 
         }
 
         @Test
-        void saveIdNullTest() {
+        void saveNullId() {
             assumeTrue(employeeService.count() == 3);
 
             Employee employee = employeeService.findOne(1L);
             employee.setId(null);
             Employee employee1 = employeeService.save(employee);
             assertEquals(4, employeeService.count());
-            assertNotNull(employeeService.findOne(4L));
             assertNotNull(employee1.getId());
         }
 
-        @Test
-        @DisplayName("If 0 should assign a new value")
-        void saveId0Test() {
-            assumeTrue(employeeService.count() == 3);
-
-            Employee employee = employeeService.findOne(1L);
-            employee.setId(0L);
-            Employee employee1 = employeeService.save(employee);
-            assertEquals(4, employeeService.count());
-
-            assertNotNull(employeeService.findOne(4L));
-            assertNotNull(employee1.getId());
-        }
 
         @Test
-        @DisplayName("Comprobar actualización")
-        void saveUpdateTest() {
+        void updateTest() {
             assumeTrue(employeeService.count() == 3);
 
             employeeService.findOne(1L).setAge(50);
@@ -148,8 +119,7 @@ public class EmployeeServiceImplJUnitTest {
         }
 
         @Test
-        @DisplayName("Saves a negative ID into the Database")
-        void saveNegativeID() {
+        void negativeIDTest() {
             assumeTrue(employeeService.count() == 3);
 
             Employee employee = employeeService.findOne(1L);
@@ -162,28 +132,9 @@ public class EmployeeServiceImplJUnitTest {
         }
     }
 
-    @Nested
-    public class GETIDMAXtests {
-
-        @Test
-        @DisplayName("check empty map")
-        void GetMaxIdEmptyTest() {
-            employeeService.deleteAll();
-            Employee employee = new Employee();
-            employeeService.save(employee);
-
-        }
-
-        @Test
-        @DisplayName("check valid map")
-        void GetMaxIdNotEmptyTest() {
-            // No access checked through save
-            // returns max id value stored
-        }
-    }
 
     @Nested
-    public class DELETE_tests {
+    public class DeleteTests {
 
 
         @Test
@@ -193,33 +144,13 @@ public class EmployeeServiceImplJUnitTest {
         }
 
         @Test
-        void deleteNotContainsTest() {
-            boolean result = employeeService.delete(-1L);
-            assertFalse(result);
-        }
-
-        @Test
         void deleteOKTest() {
-            //assumeTrue(3 == employeeService.count());
+
             int temp = employeeService.count();
             boolean result = employeeService.delete(1L);
             assertTrue(result);
             assertEquals((temp - 1), employeeService.count());
         }
 
-        @Test
-        void deleteAllNotEmptyTest() {
-            assertTrue(employeeService.count() > 0);
-            employeeService.deleteAll();
-            assertEquals(0, employeeService.count());
-        }
-
-        @Test
-        void deleteAllEmptyTest() {
-            // Does nothing
-            employeeService.deleteAll();
-            assertEquals(0, employeeService.count());
-
-        }
     }
 }
